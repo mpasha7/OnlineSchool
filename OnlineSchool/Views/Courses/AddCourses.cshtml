@@ -1,0 +1,25 @@
+﻿@model IEnumerable<OnlineSchool.Models.Course>
+
+@{
+    ViewData["Title"] = "Добавление курсов";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+@foreach (var item in Model)
+{
+    <div class="course">
+        <div class="course-group">
+            <h3><a class="course-title" asp-controller="Lessons" asp-action="AddLessons" asp-route-id="@item.Id">@item.Title</a></h3>
+            <p>@item.Description</p>
+            <a asp-controller="Courses" asp-action="EditCourse" asp-route-id="@item.Id">Редактировать</a> |
+            <a asp-controller="Courses" asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+        </div>
+        <div class="course-group">
+            <img class="photo" src="@item.PhotoPath" alt="фото курса">
+        </div>
+    </div>
+}
+<form asp-controller="Courses" asp-action="CreateCourse" method="get">
+    <input class="but" type="submit" value="Добавить курс" />
+</form>

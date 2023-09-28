@@ -1,0 +1,41 @@
+﻿@model OnlineSchool.Models.Lesson
+
+@{
+    ViewData["Title"] = "Создание урока";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+    <div class="row">
+
+        <form asp-controller="Lessons" asp-action="CreateLesson" asp-route-id="@ViewData["CourseId"]" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-gr">
+                    <label asp-for="Title" class="control-label">Название урока</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-gr">
+                    <label asp-for="Description" >Описание урока</label>
+                    <textarea asp-for="Description" cols="20" rows="5"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-gr">
+                    <label asp-for="VideoLink" class="control-label">Ссылка на видео</label>
+                    <input asp-for="VideoLink" class="form-control" />
+                    <span asp-validation-for="VideoLink" class="text-danger"></span>
+                </div>
+                <input class="but" type="submit" value="Сохранить урок" />
+            </form>
+
+    </div>
+
+    <div>
+        <a asp-controller="Lessons" asp-action="AddLessons" asp-route-id="@ViewData["CourseId"]">Вернуться к списку уроков</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

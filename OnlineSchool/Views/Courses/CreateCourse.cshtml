@@ -1,0 +1,40 @@
+﻿@model OnlineSchool.Models.Course
+
+@{
+    ViewData["Title"] = "Создание курса";
+}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+    <div class="row">
+        <form asp-action="CreateCourse" asp-controller="Courses" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-gr">
+                <label asp-for="Title" class="control-label">Название курса</label>
+                <input asp-for="Title" class="form-control"/>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-gr">
+                <label asp-for="Description" >Описание курса</label>
+                <textarea asp-for="Description" cols="20" rows="5"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-gr">
+                <label asp-for="PhotoPath" class="control-label">Фото</label>
+                <input asp-for="PhotoPath" type="file" class="form-control" />
+                <span asp-validation-for="PhotoPath" class="text-danger"></span>
+            </div>
+            <input class="but" type="submit" value="Сохранить курс" />
+        </form>
+    </div>
+    <div>
+        <a asp-action="AddCourses">Вернуться к списку курсов</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

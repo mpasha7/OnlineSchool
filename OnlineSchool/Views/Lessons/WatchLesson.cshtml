@@ -1,0 +1,19 @@
+﻿@model OnlineSchool.Models.Lesson
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+    <div>
+        <p>@Html.DisplayFor(model => model.Description)</p>
+        <p>@Html.DisplayFor(model => model.VideoLink)</p>
+        <iframe width="560" height="315" src="@Model.VideoLink" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+        <br />
+        <a asp-controller="Courses" asp-action="WatchCourse" asp-route-id="@ViewData["CourseId"]">Вернуться к списку уроков</a>
+    </div>
+</div>
+

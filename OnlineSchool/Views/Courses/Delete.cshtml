@@ -1,0 +1,38 @@
+﻿@model OnlineSchool.Models.Course
+
+@{
+    ViewData["Title"] = "Удаление курса";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <hr/>
+    <h3>Вы уверены, что хотите удалить этот курс?</h3>
+    <div>
+        <dl class="row">
+            <dt class = "col-sm-2">
+                Название
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class = "col-sm-2">
+                Описание
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class = "col-sm-2">
+                Фото
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PhotoPath)
+            </dd>
+        </dl>
+        <form asp-area="" asp-controller="Courses" asp-action="Delete" >
+            <input type="hidden" asp-for="Id" />
+            <input class="but" type="submit" value="Удалить курс" />
+            <a asp-action="AddCourses">Вернуться к списку курсов</a>
+        </form>
+    </div>
+</div>

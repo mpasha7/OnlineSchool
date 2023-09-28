@@ -1,0 +1,20 @@
+﻿@model IEnumerable<OnlineSchool.Models.Lesson>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+    @foreach (var item in Model)
+    {
+        <div class="lresson">
+            <h3><a class="course-title" asp-controller="Lessons" asp-action="WatchLesson" asp-route-id="@item.Id" asp-route-courseid="@ViewData["CourseId"]">@item.Title</a></h3>
+            <p>@item.Description</p>
+        </div>
+    }
+    <div>
+        <a asp-controller="Courses" asp-action="GetCourses" >Вернуться к списку курсов</a>
+    </div>
+</div>
