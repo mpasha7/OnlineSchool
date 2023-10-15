@@ -88,15 +88,14 @@ namespace OnlineSchool.Controllers
                 IFormFileCollection files = request.Form.Files;
                 foreach (var file in files)
                 {
-                    Directory.CreateDirectory("Photos");
+                    //Directory.CreateDirectory("photos");
                     string photoName = course.Title! + Path.GetExtension(file.FileName);
-                    string uploadPath = Path.Combine("Photos", photoName);
+                    string uploadPath = Path.Combine("wwwroot\\photos", photoName);
                     using (var fileStream = new FileStream(uploadPath, FileMode.Create))
                     {
                         await file.CopyToAsync(fileStream);
                     }
-                    course.PhotoPath = uploadPath;
-
+                    course.PhotoPath =  "~\\photos\\" + photoName;
                 }
                 _context.Courses.Add(course);
                 await _context.SaveChangesAsync();

@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UploadPhotos\" />
     <Folder Include="wwwroot\photos\" />
   </ItemGroup>
 
